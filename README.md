@@ -38,12 +38,12 @@ export const passportStore = writable<passport.Passport> (passportInstance);
 4. **Create the Auth Helper Module**: Create a new file `src/auth.ts` and define the login and handleLoginCallback functions using the provided code to manage authentication.
 5. **Create Pages and Routing**: Inside the `src/routes` directory, create Svelte components for different pages and layouts.
 
-For more detailed instructions, please refer to the official [Immutable Documentation]([https://devsupport.immutable.com/en/articles/8260567-passport-connect-to-your-authentication-client]). Remember, integrating Immutable Passport into your application not only simplifies the user onboarding process but also provides access to a passionate audience of gamers.
+For more detailed instructions, please refer to the official [Immutable Documentation](https://devsupport.immutable.com/en/articles/8260567-passport-connect-to-your-authentication-client). Remember, integrating Immutable Passport into your application not only simplifies the user onboarding process but also provides access to a passionate audience of gamers.
 
 ## Registering your application on Immutable Developer Hub
 To register your application on the Immutable Developer Hub, you need to follow these steps:
 
-1. Go to the [Immutable Developer Hub]((https://www.immutable.com/products/developer-hub)).
+1. Go to the [Immutable Developer Hub](https://www.immutable.com/products/developer-hub).
 2. Authenticate your account using Immutable Passport.
 3. Register your application as an OAuth 2.0 client by following the **Add Client** button on the Passport page.
 4. Enter the following information:
@@ -95,8 +95,16 @@ To install the Immutable SDK, follow these steps:
 ```
  npm install @immutable-x/sdk
 
-```
+ yarn add --dev @imtbl/sdk
 
+```
+**Dependencies**
+```
+npm install -D typescript ts-node
+
+yarn add --dev typescript ts-node
+
+```
 This will install the Immutable SDK as a dependency in your project.
 
 **Initializing the Passport module**
@@ -126,24 +134,18 @@ The specific steps involved in this process will vary depending on the programmi
 
 Here is an example of how to install and initialize the Passport client in a Node.js application:
 
-```javascript
-// Install the Immutable SDK
-const ImmutableSDK = require("@immutable-x/sdk");
+```
+import { config, passport  } from '@imtbl/sdk';
 
-// Initialize the Passport module
-const Passport = ImmutableSDK.Passport;
-Passport.initialize({
-  clientId: "YOUR_CLIENT_ID",
-  clientSecret: "YOUR_CLIENT_SECRET"
-});
-
-// Create a new Passport strategy
-const PassportStrategy = require("passport-oauth2");
-const passportStrategy = new PassportStrategy({
-  authorizationURL: "https://api.immutable.com/auth/authorize",
-  tokenURL: "https://api.immutable.com/auth/token",
-  clientId: "YOUR_CLIENT_ID",
-  clientSecret: "YOUR_CLIENT_SECRET"
+const passportInstance = new passport.Passport({
+  baseConfig: new config.ImmutableConfiguration({
+    environment: config.Environment.PRODUCTION,
+  }),
+  clientId: '<YOUR_CLIENT_ID>',
+  redirectUri: 'https://example.com',
+  logoutRedirectUri: 'https://example.com/logout',
+  audience: 'platform_api',
+  scope: 'openid offline_access email transact'
 });
 
 // Register the new strategy with the Passport module
@@ -151,8 +153,9 @@ Passport.use(passportStrategy);
 
 // Configure your application to use the Passport module to authenticate users
 // ...
+
 ```
 
 Once you have configured your application to use the Passport module, you can use it to authenticate users and access their Immutable accounts.
 
-For more information on using the Passport module, please see the official documentation: https://docs.immutable.com/docs/x/passport.
+For more information on using the Passport module, please see the official documentation: [Immutable Passport Documentation](https://docs.immutable.com/docs/zkEVM/products/passport).
