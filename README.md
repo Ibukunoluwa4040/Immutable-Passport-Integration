@@ -2,17 +2,21 @@
 ## Creating a simple application
 Create a simple application that integrates Immutable Passport by following these steps:
 
-1. **Clone the Template Repository**: Start by cloning the base template repository which is made with Vite and SvelteKit and includes the Immutable SDK for implementing passport functionality¹. You can clone it using the following command:
+1. **Clone the Template Repository**: Start by cloning the base template repository which is made with Vite and SvelteKit and includes the Immutable SDK for implementing passport functionality. You can clone it using the following command:
 ```bash
 git clone https://github.com/Arturski/immutable-base-project-svelte.git
 cd immutable-base-project-svelte
 ```
 2. **Install Dependencies**: Next, install the necessary dependencies and test your environment with these commands:
+   
 ```bash
+
 npm i
 npm run dev -- --open
+
 ```
 3. **Create a Store for the Passport Provider Object**: Create a new file `src/store.ts` and add the following code, replacing placeholders with actual values:
+   
 ```javascript
 import { writable } from "svelte/store";
 import {config, passport} from "@imtbl/SDK";
@@ -34,6 +38,7 @@ const passportInstance = new passport.Passport (passportConfig);
 
 export const providerStore = writable<undefined | null> (null);
 export const passportStore = writable<passport.Passport> (passportInstance);
+
 ```
 4. **Create the Auth Helper Module**: Create a new file `src/auth.ts` and define the login and handleLoginCallback functions using the provided code to manage authentication.
 5. **Create Pages and Routing**: Inside the `src/routes` directory, create Svelte components for different pages and layouts.
@@ -49,12 +54,19 @@ To register your application on the Immutable Developer Hub, you need to follow 
 4. Enter the following information:
 
     * **Property:** A unique identifier for your application.
+      
     * **Description:** A brief description of your application.
+      
     * **Application Type:** Select the type of application you're developing. Currently, only **Web Application** is supported.
+      
     * **Client Name:** The name that will be displayed to users when they login to your application using Passport.
+      
     * **Logout URLs:** The URL that users will be redirected to when they log out of your application.
+      
     * **Callback URLs:** The URL that users will be redirected to once the authentication process is complete. This is also where your application will process the authentication response.
+      
     * **Web Origins URLs:** (Optional) A list of URLs that are allowed to request authorization from your application. This field is only available when you select the **Native Application** type.
+      
 5. Click the **Create Client** button.
 
 Once you have created a client (Creating a client allows you to configure settings specific to your application, such as the permissions you require from users), you will be given a Client ID and Client Secret. You will need these to initialize the Passport module in your application. 
