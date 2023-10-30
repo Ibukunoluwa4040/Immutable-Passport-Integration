@@ -1,4 +1,20 @@
 # Guide-to-Immutable-Passport-Integration
+
+## Table of Contents
+
+* [Introduction to immutable passport](#Introduction-to-immutable-passport)
+* [Creating a simple application](#Creating-a-simple-application)
+* [Registering your application on Immutable Developer Hub](#Registering-your-application-on-Immutable-Developer-Hub)
+* [Installing and initializing the Passport client](#Installing-and-initializing-the-Passport-client)
+     * [Initializing the Passport module](#Initializing-the-Passport-module)
+     * [Configuring your application to use the Passport module](#Configuring-your-application-to-use-the-Passport-module)
+* [Logging in a user with Passport](#Logging-in-a-user-with-Passport)
+* [Logout users](#Logging-out-a-user)
+* [Initiate a transaction from Passport](#Initiate-a-transaction-from-Passport)
+
+## Introduction
+Immutable Passport is a new authentication protocol for web3 applications that uses a non-custodial wallet to store user credentials and a decentralized identity system to give users control over their own identity and data. It is more secure, user-friendly, and privacy-preserving than traditional authentication protocols. This guide will walk you through the step-by-step process of integrating Immutable Passport into your application. By the end of this guide, you will be able to create a simple application, register your application, installing and initializing the passport client, log in a user with passport, and more.
+
 ## Creating a simple application
 Create a simple application that integrates Immutable Passport by following these steps:
 
